@@ -1,0 +1,16 @@
+from PIL import Image, ImageDraw
+import random
+
+bg = Image.open("bg.jfif").convert("RGB")
+ctx = ImageDraw.Draw(bg)
+height, width = bg.size
+
+
+power = 200
+tile_size = width // power
+
+for j in range(0, height // tile_size):
+    for i in range(0, power):
+        ctx.rectangle([(tile_size * i, j * tile_size), (tile_size * (i + 1), (j + 1) * tile_size)], (random.randint(0, 255), random.randint(0, 255), random.randint(0, 255)))
+
+bg.show()
